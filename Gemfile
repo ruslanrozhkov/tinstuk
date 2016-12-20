@@ -52,3 +52,5 @@ gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'autoprefixer-rails'
 
 gem 'font-awesome-sass', '~> 4.7.0'
+
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
