@@ -52,10 +52,64 @@
 			$(element).bind('touchend mouseup', this.handler);
 		},
 
-		showPane: function (index) {
-			panes.eq(current_pane).hide();
-			current_pane = index;
-		},
+        bindNew: function(element){
+            panes = $(">ul>li", element);
+            pane_count = panes.length;
+            current_pane = panes.length - 1;
+        },
+
+        showPane: function (index) {
+            panes.eq(current_pane).hide().remove();
+            current_pane = index;
+
+            //   My code 	//
+            var li_count = $( "#tinderslide > ul > li" ).length;
+
+            //Custom -> Add more elements if reaching the end!
+            if ( li_count == 5 ) {
+
+                var last_id = $( "#tinderslide > ul > li" ).first().attr("id");
+                // make an ajax call passing along our last user id
+                $.ajax({
+
+                    // make a get request to the server
+                    type: "GET",
+                    // get the url from the href attribute of our link
+                    url: "/users",
+                    // send the last id to our rails app
+                    data: {
+                        id: last_id
+                    },
+                    // the response will be a script
+                    dataType: "script",
+
+                    // upon success
+                    success: function (e) {
+                    }
+
+                });
+
+
+            } else if (li_count == 0 && load_more == true) {
+
+                $.ajax({
+                    // make a get request to the server
+                    type: "GET",
+                    // get the url from the href attribute of our link
+                    url: "/users",
+                    // the response will be a script
+                    dataType: "script",
+
+                    // upon success
+                    success: function (e) {
+                    }
+
+                });
+
+            } // End if li_count
+            //	My code 	//
+
+        },
 
 		next: function () {
 			return this.showPane(current_pane - 1);
@@ -170,7 +224,10 @@
 			else if ($.isFunction(Plugin.prototype[options])) {
 				$.data(this, 'plugin_' + pluginName)[options]();
 		    }
-		});
+            else {
+                $.data(this, "plugin_" + pluginName).bindNew(this);
+            }
+        });
 
 		return this;
 	};
