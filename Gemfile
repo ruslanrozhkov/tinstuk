@@ -54,3 +54,7 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 4.7.0'
 
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
+
+gem 'omniauth-facebook'
+
+gem 'dotenv-rails', :groups => [:development, :test]
