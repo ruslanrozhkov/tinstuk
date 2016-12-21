@@ -39,6 +39,16 @@
 
       <script type="text/javascript">
 
+          /**
+           * Set button action to trigger jTinder like & dislike.
+           */
+
+          $('.actions .like, .actions .dislike').click(function(e){
+              e.preventDefault();
+              $("#tinderslide").jTinder($(this).attr('class'));
+          });
+
+
           $("#tinderslide > ul li").tsort({attr:"id"});
 
           $("#tinderslide").jTinder({
