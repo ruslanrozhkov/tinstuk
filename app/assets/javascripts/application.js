@@ -16,6 +16,8 @@
 //= require jasny-bootstrap
 //= require supersized.3.2.7
 //= require bootstrap-sprockets
+//= require jquery.jTinder
+//= require jquery.transform2d
 //= require turbolinks
 //= require_tree .
 
