@@ -58,3 +58,5 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 gem 'omniauth-facebook'
 
 gem 'dotenv-rails', :groups => [:development, :test]
+
+gem 'rails-callback_log', group: [:development, :test]
