@@ -1,70 +1,71 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tinstuk</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Tinstuk</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=0.9">
+</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<body>
+<% if current_user %>
+    <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+      <ul class="nav navmenu-nav">
+        <li class="active"><a href="#"><i class="fa fa-users"></i> Discover</a></li>
+        <li><a href="#"><i class="fa fa-heart"></i> Matches</a></li>
+        <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+        <li><%= link_to 'sign_out', method: :delete do %><i class="fa fa-cog"></i> Log Out <% end %></li>
+      </ul>
+    </nav>
 
-    <meta name="viewport" content="width=device-width, initial-scale=0.9">
-  </head>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <button type="button" class="navbar-toggle button-nav" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+        <i class="fa fa-cog"></i>
+      </button>
+      <button type="button" class="navbar-toggle button-nav pull-right">
+        <i class="fa fa-heart"></i>
+      </button>
+    </div>
 
-  <body>
+<% else %>
 
-  <% if current_user %>
-  <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
-    <li class="active"><a href="#"><i class="fa fa-users"></i> Discover</a></li>
-    <li class="active"><a href="#"><i class="fa fa-heart"></i> Matches</a></li>
-    <li class="active"><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-    <li class="active"><%= link_to 'sign_out', method: :delete do %><i class="fa fa-cog"></i> Sign out<% end %></li>
-  </nav>
+    <a class="navbar-brand" href="#">
+      <%= image_tag 'logo_white.png', alt: 'Tinstuk Logo', class: 'logo-brand' %>
+    </a>
 
-  <div class="navbar navbar-default navbar-fixed-top">
-    <button type="button" class="navbar-toggle button-nav" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
-      <i class="fa fa-cog"></i>
-    </button>
-    <button type="button" class="navbar-toggle pull-right button-nav">
-      <i class="fa fa-heart"></i>
-    </button>
-  </div>
+<% end %>
 
-      <% else %>
-  <a class="navbar-brand" href="#">
-    <%= image_tag 'logo_white.png', alt: 'Tinstuk Logo', class: 'logo-brand' %>
-  </a>
+<%= yield %>
 
-      <% end %>
-    <%= yield %>
-
-      <script type="text/javascript">
-
-          /**
-           * Set button action to trigger jTinder like & dislike.
-           */
-
-          $('.actions .like, .actions .dislike').click(function(e){
-              e.preventDefault();
-              $("#tinderslide").jTinder($(this).attr('class'));
-          });
+<script type="text/javascript">
 
 
-          $("#tinderslide > ul li").tsort({attr:"id"});
+    /**
+     * Set button action to trigger jTinder like & dislike.
+     */
 
-          $("#tinderslide").jTinder({
-              onDislike: function (item) {
+    $('.actions .like, .actions .dislike').click(function(e){
+        e.preventDefault();
+        $("#tinderslide").jTinder($(this).attr('class'));
+    });
 
-              },
-              onLike: function (item) {
+    $("#tinderslide > ul li").tsort({attr:"id"});
 
-              },
-              animationRevertSpeed: 200,
-              animationSpeed: 400,
-              threshold: 1,
-              likeSelector: '.like',
-              dislikeSelector: '.dislike'
-          });
-      </script>
+    $("#tinderslide").jTinder({
+        onDislike: function (item) {
 
-  </body>
+        },
+        onLike: function (item) {
+
+        },
+        animationRevertSpeed: 200,
+        animationSpeed: 400,
+        threshold: 1,
+        likeSelector: '.like',
+        dislikeSelector: '.dislike'
+    });
+
+</script>
+</body>
 </html>
