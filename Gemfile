@@ -64,3 +64,5 @@ gem 'rails-callback_log', group: [:development, :test]
 gem 'paperclip', '~> 5.0.0'
 
 gem 'aws-sdk', '~> 2'
+
+gem 'simple_form'
