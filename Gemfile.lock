@@ -54,6 +54,7 @@ GEM
       sass (>= 3.4.19)
     builder (3.2.2)
     byebug (9.0.6)
+    cancan (1.6.10)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -66,6 +67,8 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.3)
+    data-confirm-modal (1.2.0)
+      railties (>= 3.0)
     debug_inspector (0.0.2)
     dotenv (2.1.1)
     dotenv-rails (2.1.1)
@@ -216,7 +219,9 @@ DEPENDENCIES
   aws-sdk (~> 2)
   bootstrap (~> 4.0.0.alpha5)
   byebug
+  cancan
   coffee-rails (~> 4.2)
+  data-confirm-modal
   dotenv-rails
   font-awesome-rails (~> 4.7, >= 4.7.0.1)
   font-awesome-sass (~> 4.7.0)
