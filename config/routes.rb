@@ -9,10 +9,12 @@ Rails.application.routes.draw do
   end
 
   get 'auth/facebook/callback' => 'sessions#create'
-  delete 'sign_out' => 'sessions#destroy'
+  delete '/sign_out' => 'sessions#destroy'
 
   post 'create_friendship' => 'friendships#create'
   delete 'delete_friendship' => 'friendships#destroy'
+
+  get 'matches/get_email' => 'users#get_email'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
